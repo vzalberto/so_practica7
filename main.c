@@ -14,6 +14,11 @@ int main(int argc, char *argv[]){
 	struct sembuf operacion;
 	key_t llave;
 
+	/*Pregunta 7.1*/
+	printf("sembuf.sem_num: %d\n", operacion.sem_num);
+	printf("sembuf.sem_op: %d\n", operacion.sem_op);
+	printf("sembuf.sem_flg: %u\n", operacion.sem_flg);
+
 	llave = ftok(argv[0], 'U');
 
 	if((semid = semget(llave, 2, IPC_CREAT | 0600)) == -1){
