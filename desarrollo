@@ -1,0 +1,3 @@
+
+programa 7-2
+	el proceso en salir del cpu es quien debe hacer un up. En este caso, se hace el up sobre el semaforo del otro proceso. 

@@ -1,0 +1,6 @@
+al borrar el semaforo se borra una copia en cada proceso?
+en otras palabras, ¿cada proceso tiene su propia copia del semaforo?
+¿existen dos semaforos? 
+
+DUH- sí, pues se crearon DOS. D: $facepalm
+
