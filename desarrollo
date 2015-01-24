@@ -10,3 +10,6 @@ pregunta 7-3
 	-sigue funcionando (aqui vimos que los valores de sembuf cambian)
 	-No, el programa no ejecuta ni la primera impresion. Cuando el padre intenta hacer un down, se bloquea. Por lo tanto, nunca hace el up al semaforo del hijo y este permanece inactivo.
 	-Se invierte el orden de impresion pues el hijo hace su operacion down primero y el padre permanece inactivo hasta que el hijo hace up al semaforo paterno.
+
+pregunta 7-4
+	-Los semaforos se inician en 1 y 0, según el proceso que comenzará las impresiones. Al inicio del bucle, el proceso intenta hacer un down a su respectivo semáforo. Cuando lo consigue, imprime el valor de i y hace un up al semáforo contrario. Entonces, el proceso que está esperando hacer down se desbloquea y así hasta terminar i.

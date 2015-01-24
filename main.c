@@ -37,6 +37,8 @@ int main(int argc, char *argv[]){
 			operacion.sem_flg = 0;
 			operacion.sem_op = -1;
 			operacion.sem_num = SEMAFORO_HIJO;
+			printf("sem_num: %d\n", operacion.sem_num);
+			printf("sem_op: %d\n", operacion.sem_op);
 			semop(semid, &operacion, 1);
 
 			printf("SOY EL PROCESO HIJO: %d\n", i--);
