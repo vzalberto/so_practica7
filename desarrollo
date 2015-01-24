@@ -1,3 +1,12 @@
 
 programa 7-2
-	el proceso en salir del cpu es quien debe hacer un up. En este caso, se hace el up sobre el semaforo del otro proceso. 
+	el proceso en salir del cpu es quien debe hacer un up. En este caso, se hace el up sobre el semaforo del otro proceso.
+
+pregunta 7-2
+	los valores siempre son diferentes
+	semop hace uso de los valores almacenados en sembuf
+
+pregunta 7-3
+	-sigue funcionando (aqui vimos que los valores de sembuf cambian)
+	-No, el programa no ejecuta ni la primera impresion. Cuando el padre intenta hacer un down, se bloquea. Por lo tanto, nunca hace el up al semaforo del hijo y este permanece inactivo.
+	-Se invierte el orden de impresion pues el hijo hace su operacion down primero y el padre permanece inactivo hasta que el hijo hace up al semaforo paterno.

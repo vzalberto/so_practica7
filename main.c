@@ -15,18 +15,18 @@ int main(int argc, char *argv[]){
 	key_t llave;
 
 	/*Pregunta 7.1*/
-	printf("sembuf.sem_num: %d\n", operacion.sem_num);
-	printf("sembuf.sem_op: %d\n", operacion.sem_op);
-	printf("sembuf.sem_flg: %u\n", operacion.sem_flg);
+	// printf("sembuf.sem_num: %d\n", operacion.sem_num);
+	// printf("sembuf.sem_op: %d\n", operacion.sem_op);
+	// printf("sembuf.sem_flg: %u\n", operacion.sem_flg);
 
 	llave = ftok(argv[0], 'U');
 
-	if((semid = semget(llave, 2, IPC_CREAT | 0600)) == -1){
+	if((semid = semget(llave, 5, IPC_CREAT | 0600)) == -1){
 		perror("Error en semget");
 		exit(-1);
 	}
-	semctl(semid, SEMAFORO_HIJO, SETVAL, 0);
-	semctl(semid, SEMAFORO_PADRE, SETVAL, 1);
+	semctl(semid, SEMAFORO_HIJO, SETVAL, 1);
+	semctl(semid, SEMAFORO_PADRE, SETVAL, 0);
 
 	if((pid = fork()) == -1){
 		perror("fork");
