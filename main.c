@@ -6,11 +6,12 @@
 #include <sys/sem.h>
 #include <sys/sem.h>
 
-#define SEMAFORO_PADRE 1
-#define SEMAFORO_HIJO 0
+#define SEMAFORO_PADRE 0
+#define SEMAFORO_HIJO 1
+#define SEMAFORO_ESPIRITU_SANTO 2
 
 int main(int argc, char *argv[]){
-	int semid,i = 10, pid;
+	int semid, i = 10, pid;
 	struct sembuf operacion;
 	key_t llave;
 
@@ -21,12 +22,13 @@ int main(int argc, char *argv[]){
 
 	llave = ftok(argv[0], 'U');
 
-	if((semid = semget(llave, 5, IPC_CREAT | 0600)) == -1){
+	if((semid = semget(llave, 3, IPC_CREAT | 0600)) == -1){
 		perror("Error en semget");
 		exit(-1);
 	}
-	semctl(semid, SEMAFORO_HIJO, SETVAL, 1);
-	semctl(semid, SEMAFORO_PADRE, SETVAL, 0);
+	semctl(semid, SEMAFORO_PADRE, SETVAL, 1);
+	semctl(semid, SEMAFORO_HIJO, SETVAL, 0);
+	semctl(semid, SEMAFORO_ESPIRITU_SANTO, SETVAL, 0);
 
 	if((pid = fork()) == -1){
 		perror("fork");

@@ -2,14 +2,18 @@
 programa 7-2
 	el proceso en salir del cpu es quien debe hacer un up. En este caso, se hace el up sobre el semaforo del otro proceso.
 
-pregunta 7-2
+pregunta 7-1
 	los valores siempre son diferentes
 	semop hace uso de los valores almacenados en sembuf
 
-pregunta 7-3
+pregunta 7-2
 	-sigue funcionando (aqui vimos que los valores de sembuf cambian)
 	-No, el programa no ejecuta ni la primera impresion. Cuando el padre intenta hacer un down, se bloquea. Por lo tanto, nunca hace el up al semaforo del hijo y este permanece inactivo.
 	-Se invierte el orden de impresion pues el hijo hace su operacion down primero y el padre permanece inactivo hasta que el hijo hace up al semaforo paterno.
 
-pregunta 7-4
+pregunta 7-3
 	-Los semaforos se inician en 1 y 0, según el proceso que comenzará las impresiones. Al inicio del bucle, el proceso intenta hacer un down a su respectivo semáforo. Cuando lo consigue, imprime el valor de i y hace un up al semáforo contrario. Entonces, el proceso que está esperando hacer down se desbloquea y así hasta terminar i.
+
+ejercicio 7-1
+	-La llave sirve para esta situación. Debe ser la misma en la llamada a semget por cada programa. Dejaremos IPC_CREAT en el campo semflg suponiendo que cualquier programa se puede ejecutar primero. NEL. Aunque sean independientes debemos establecer quien comenzara la impresión. Solo un programa contendrá las llamadas a semctl.
+	- En el screen 7 y 8 se muestran las impresiones con los programas corriendo en terminales distintas. El programa A ejecuta su primera impresion y se bloquea, pues el programa B es quien debe hacer un UP al semáforo A. Cuando este se ejecuta, cada terminal muestra sus respectivos datos.

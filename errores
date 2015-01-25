@@ -1,0 +1,2 @@
+*no olvidar que argv empieza con el nombre del programa
+*no olvidar llamar a semop()
